@@ -1,3 +1,4 @@
+#pragma region Preface
 //-----------------------------------------------------------------------------|
 // Authorship
 //-----------------------------------------------------------------------------|
@@ -41,7 +42,7 @@
 // https://en.wikipedia.org/wiki/BSD_licenses
 /*
 MIT License
-Copyright (c) 2018 Timothy W. Lum (twhlum@gmail.com)
+Copyright (c) 2017 Timothy W. Lum (twhlum@gmail.com)
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
 in the Software without restriction, including without limitation the rights
@@ -75,17 +76,39 @@ SOFTWARE.
 
 
 
+#pragma endregion
+
+
+
+#pragma region Include_Statements
 //-------|---------|---------|---------|---------|---------|---------|---------|
 //
 //       INCLUDE STATEMENTS
 //
 //-------|---------|---------|---------|---------|---------|---------|---------|
 
+// Necessary for std::cin and std::cout commands
 #include <stdio.h>
+#include <iostream>
+
+// Necessary for string operations
 #include <string.h>
+
+// Provided by problem description
 #include <math.h>
 #include <stdlib.h>
-#include <iostream>
+
+#pragma endregion
+
+
+
+#pragma region Method_Declarations
+//-------|---------|---------|---------|---------|---------|---------|---------|
+//
+//       METHOD DECLARATIONS
+//
+//-------|---------|---------|---------|---------|---------|---------|---------|
+
 template <class typeT>
 void initialize(typeT tgtArray[], int numDigits);
 
@@ -98,6 +121,11 @@ int findPivot(const int numArray[], int low, int high);
 
 void sortArray(int numArray[], const int numDigits);
 
+#pragma endregion
+
+
+
+#pragma region Public_Methods
 //-------|---------|---------|---------|---------|---------|---------|---------|
 //
 //       PUBLIC METHODS
@@ -230,11 +258,11 @@ int const calcMode(const int numDigits, const int numArray[]) {
 } // Closing calcMode()
 
 // (+) = Public -----------------------|
-// #initialize(int[], int)
+// #initialize(<T>[], int)
 //-------------------------------------|
 // Desc:    Initializes an array (sets all values to 0)
-// Params:  const int[] arg1 - The target array to initialize
-//          const int[] arg2 - The number of elements in the array
+// Params:  <T>[] arg1 - The target array to initialize
+//          int arg2 - The number of elements in the array
 // PreCons: The array size must be greater than or equal to arg2
 // PosCons: The number of elements initialized equals arg2
 // RetVal:  None
@@ -249,8 +277,8 @@ void initialize(typeT tgtArray[], int numDigits) {
 // #obliviate(int, int[])
 //-------------------------------------|
 // Desc:    Clears the memory of an array
-// Params:  const <T>[] arg1 - The array to clear
-//          const int arg2 - The size of the array
+// Params:  <T>[] arg1 - The array to clear
+//          int arg2 - The size of the array
 // PreCons: To fully clear, arg1 must be the size of the array
 // PosCons: The target array has been cleared
 // RetVal:  None
@@ -279,6 +307,11 @@ void loadArray(int tgtArray[], const int numElements) {
    }
 } // Closing loadArray()
 
+#pragma endregion
+
+
+
+#pragma region Private_Methods
 //-------|---------|---------|---------|---------|---------|---------|---------|
 //
 //       PRIVATE METHODS
@@ -339,33 +372,34 @@ void quicksort(int numArray[], int low, int high) {
    // Visit
    // Step 1: Find the Mo3 pivot (is it low, middle, or high?
    int pivotLocation = findPivot(numArray, low, high);
-   //                     \ /
-   // +-----+-----+-----+-----+-----+-----+-----+-----+
-   // |  0  |  1  |  2  |  3  |  4  |  5  |  6  |  7  |
-   // +-----+-----+-----+-----+-----+-----+-----+-----+
+
+   //                           \P/
+   // +-L:0-+-----+-----+-----+-----+-----+-----+-----+-----+-H:9-+
+   // |  0  |  1  |  2  |  3  |  4  |  5  |  6  |  7  |  8  |  9  |
+   // +-----+-----+-----+-----+-----+-----+-----+-----+-----+-----+
+   //
 
    // Step 2: Move the pivot out of the way (to the end of the array
-   //                     \ /
-   // +-----+-----+-----+-----+-----+-----+-----+-----+
-   // |  0  |  1  |  2  |  3  |  4  |  5  |  6  |  7  |
-   // +-----+-----+-----+-----+-----+-----+-----+-----+
+
    int temp = numArray[pivotLocation];
    numArray[pivotLocation] = numArray[high];
    numArray[high] = temp;
-   //                     \ /
-   // +-----+-----+-----+-----+-----+-----+-----+-----+
-   // |  0  |  1  |  2  |  7  |  4  |  5  |  6  |  3  |
-   // +-----+-----+-----+-----+-----+-----+-----+-----+
 
+   //                                                         \P/
+   // +-L:0-+-----+-----+-----+-----+-----+-----+-----+-----+-H:9-+
+   // |  0  |  1  |  2  |  3  |  9  |  5  |  6  |  7  |  8  |  4  |
+   // +-----+-----+-----+-----+-----+-----+-----+-----+-----+-----+
+   //                            4 ->                       <- 9
 
    // Step 3: Compare and swap
    // For every index in the subarray, compare
    int pivot = low;
-   //                     \ /
-   // +-L:0-+-----+-----+-----+-----+-----+-----+-H:7-+
-   // |  0  |  1  |  2  |  7  |  4  |  5  |  6  |  3  |
-   // +-----+-----+-----+-----+-----+-----+-----+-----+
-// / \   *
+
+   //   \P/
+   // +-L:0-+-----+-----+-----+-----+-----+-----+-----+-----+-H:9-+
+   // |  0  |  1  |  2  |  3  |  9  |  5  |  6  |  7  |  8  |  4  |
+   // +-----+-----+-----+-----+-----+-----+-----+-----+-----+-----+
+   //  ^i=0^  1->   2->   3->   4->   5->   6->   7->   8->  < H ?
 
    for (int i = low ; i < high ; i++) {
       // If the number at the comparison index is less than the pivot...
@@ -379,12 +413,19 @@ void quicksort(int numArray[], int low, int high) {
       }
    } // Closing for loop - All comparisons complete.
 
+   //                           \P/
+   // +-L:0-+-----+-----+-----+-----+-----+-----+-----+-----+-H:9-+
+   // |  0  |  1  |  2  |  3  |  9  |  5  |  6  |  7  |  8  |  4  |
+   // +-----+-----+-----+-----+-----+-----+-----+-----+-----+-----+
+   //
+
    // Step 4: Place the pivot
-   //                     \7/
-   // +-L:0-+-----+-----+-----+-----+-----+-----+-H:7-+
-   // |  0  |  1  |  2  |  3  |  4  |  5  |  6  |  7  |
-   // +-----+-----+-----+-----+-----+-----+-----+-----+
-   //                / \                     *
+   //                           \P/
+   // +-L:0-+-----+-----+-----+-----+-----+-----+-----+-----+-H:9-+
+   // |  0  |  1  |  2  |  3  |  4  |  5  |  6  |  7  |  8  |  9  |
+   // +-----+-----+-----+-----+-----+-----+-----+-----+-----+-----+
+   //                            9 ->                       <- 4
+
    temp = numArray[pivot];
    numArray[pivot] = numArray[high];
    numArray[high] = temp;
@@ -393,7 +434,13 @@ void quicksort(int numArray[], int low, int high) {
    quicksort(numArray, low, (pivot - 1));
    // Recur right
    quicksort(numArray, (pivot + 1), high);
-}
+
+   //                           \P/ - This index is sorted
+   // +-L:0-+-----+-----+-----+-----+-----+-----+-----+-----+-H:9-+
+   // |  0  |  1  |  2  |  3  |  4  |  5  |  6  |  7  |  8  |  9  |
+   // +-----+-----+-----+-----+-----+-----+-----+-----+-----+-----+
+   // |   quicksort(left)     |XXXXX|      quicksort(right)       |
+} // Closing quicksort();
 
 // (-) = Private ----------------------|
 // #findPivot(int[], int, int)
@@ -468,6 +515,11 @@ int findPivot(const int numArray[], int low, int high) {
    return (low);
 } // closing selectPivot()
 
+#pragma endregion
+
+
+
+#pragma region Program_Driver
 //-------|---------|---------|---------|---------|---------|---------|---------|
 //
 //       PROGRAM DRIVER
@@ -493,19 +545,21 @@ int main() {
 
    // Calculate the mean
    double mean = calcMean(numDigits, numArray);
-   std::cout << "Mean : " << std::fixed << mean << std::endl;
+   std::cout << std::fixed << mean << std::endl;
 
    // Calculate the median
    double median = calcMedian(numDigits, numArray);
-   std::cout << "Median : " << std::fixed << median << std::endl;
+   std::cout << std::fixed << median << std::endl;
 
    // Calculate the mode
    int mode = calcMode(numDigits, numArray);
-   std::cout << "Mode : " << mode << std::endl;
+   std::cout << mode << std::endl;
 
    // Deallocate the array
    obliviate(numArray, numDigits);
    delete numArray;
 
-   return 0;
-}
+   return (0);
+} // Closing main()
+
+#pragma endregion
