@@ -5,7 +5,7 @@
 // Tim Lum (https://github.com/Teabeans)
 // twhlum@gmail.com
 // Created:  2018.01.26
-// Modified: 2018.01.26
+// Modified: 2018.01.29
 //
 
 //-----------------------------------------------------------------------------|
@@ -41,7 +41,7 @@
 // https://en.wikipedia.org/wiki/BSD_licenses
 /*
 MIT License
-Copyright (c) 2017 Timothy W. Lum (twhlum@gmail.com)
+Copyright (c) 2018 Timothy W. Lum (twhlum@gmail.com)
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
 in the Software without restriction, including without limitation the rights
