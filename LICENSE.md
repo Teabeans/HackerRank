@@ -1,4 +1,4 @@
-###LICENSE
+### LICENSE:
 ```
 Copyright 2017-Present Tim Lum (twhlum@gmail.com)
 
@@ -20,6 +20,7 @@ IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN
 CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 ```
 
+##### FURTHER INFORMATION:
 ```
 [SOURCE](https://opensource.org/licenses/MIT) 
 
