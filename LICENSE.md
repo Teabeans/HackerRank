@@ -1,3 +1,5 @@
+*LICENSE
+```
 Copyright 2017-Present Tim Lum (twhlum@gmail.com)
 
 Permission is hereby granted, free of charge, to any person obtaining a copy of
@@ -20,3 +22,4 @@ CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 [SOURCE](https://opensource.org/licenses/MIT) 
 
 [WIKI](https://en.wikipedia.org/wiki/MIT_License)
+```
