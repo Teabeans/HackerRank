@@ -21,6 +21,6 @@ CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 ```
 
 ##### FURTHER INFORMATION:
-`[SOURCE]` - https://opensource.org/licenses/MIT
+`[SOURCE] -` https://opensource.org/licenses/MIT
 
-`[WIKI]  ` - https://en.wikipedia.org/wiki/MIT_License
+`[WIKI]   -` https://en.wikipedia.org/wiki/MIT_License
