@@ -38,8 +38,8 @@
 // License
 //-----------------------------------------------------------------------------|
 //
-// This software is published under the The 2-Clause BSD License
-// https://en.wikipedia.org/wiki/BSD_licenses
+// This software is published under the MIT License
+// https://en.wikipedia.org/wiki/MIT_License
 /*
 MIT License
 Copyright (c) 2017 Timothy W. Lum (twhlum@gmail.com)
